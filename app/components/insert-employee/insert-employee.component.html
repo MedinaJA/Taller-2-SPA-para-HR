@@ -1,0 +1,77 @@
+<div class="container mt-4">
+    <div class="d-flex align-items-center justify-content-between">
+        <h2>Formulario de Empleado</h2>
+        <button type="button" class="btn btn-outline-info" (click)="Back()">
+            <i class="bi bi-arrow-left-circle"></i>
+        </button>
+    </div>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="employee_id">ID Empleado <span class="text-danger">*</span></label>
+            <input type="number" id="employee_id" formControlName="employee_id" class="form-control" placeholder="Ingrese el ID del empleado" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('employee_id')?.invalid && employeeForm.get('employee_id')?.touched">El ID debe ser un número válido.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="first_name">Nombre <span class="text-danger">*</span></label>
+            <input type="text" id="first_name" formControlName="first_name" class="form-control" placeholder="Ingrese su nombre" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('first_name')?.invalid && employeeForm.get('first_name')?.touched">El nombre es obligatorio y debe tener menos de 50 caracteres.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Apellido <span class="text-danger">*</span></label>
+            <input type="text" id="last_name" formControlName="last_name" class="form-control" placeholder="Ingrese su apellido" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('last_name')?.invalid && employeeForm.get('last_name')?.touched">El apellido es obligatorio y debe tener menos de 50 caracteres.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email <span class="text-danger">*</span></label>
+            <input type="email" id="email" formControlName="email" class="form-control" placeholder="Ingrese su email" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">El email debe ser válido.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="phone_number">Número de Teléfono <span class="text-danger">*</span></label>
+            <input type="tel" id="phone_number" formControlName="phone_number" class="form-control" placeholder="Ej. 123-456-7890" required pattern="\d{3}[-]\d{3}[-]\d{4}" />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('phone_number')?.invalid && employeeForm.get('phone_number')?.touched">El número de teléfono debe estar en el formato 123-456-7890.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="hire_date">Fecha de Contratación <span class="text-danger">*</span></label>
+            <input type="date" id="hire_date" formControlName="hire_date" class="form-control" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('hire_date')?.invalid && employeeForm.get('hire_date')?.touched">La fecha de contratación es obligatoria.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="job_id">ID Trabajo <span class="text-danger">*</span></label>
+            <input type="text" id="job_id" formControlName="job_id" class="form-control" placeholder="Ingrese el ID del trabajo" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('job_id')?.invalid && employeeForm.get('job_id')?.touched">El ID de trabajo es obligatorio y debe tener menos de 10 caracteres.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="salary">Salario <span class="text-danger">*</span></label>
+            <input type="number" id="salary" formControlName="salary" class="form-control" placeholder="Ingrese el salario" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('salary')?.invalid && employeeForm.get('salary')?.touched">El salario debe ser un número válido.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="commission_pct">Comisión</label>
+            <input type="number" id="commission_pct" formControlName="commission_pct" class="form-control" placeholder="Ingrese la comisión" />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('commission_pct')?.invalid && employeeForm.get('commission_pct')?.touched">La comisión debe ser un número válido.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="manager_id">ID Manager <span class="text-danger">*</span></label>
+            <input type="number" id="manager_id" formControlName="manager_id" class="form-control" placeholder="Ingrese el ID del manager" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('manager_id')?.invalid && employeeForm.get('manager_id')?.touched">El ID del manager debe ser un número válido.</small>
+        </div>
+        <div class="form-group">
+            <label for="department_id">ID Departamento <span class="text-danger">*</span></label>
+            <input type="number" id="department_id" class="form-control" formControlName="department_id" placeholder="Ingrese el ID del departamento" required />
+            <small class="text-danger" *ngIf="employeeForm && employeeForm.get('department_id')?.invalid && employeeForm.get('department_id')?.touched">
+                El ID del departamento debe ser un número válido.
+            </small>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3"><b>Enviar</b></button>
+    </form>
+</div>
